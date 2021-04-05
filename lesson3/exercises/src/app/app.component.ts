@@ -48,33 +48,45 @@ export class AppComponent {
       let movement = parseInt(rocketImage.style.left) + 10 + 'px';
       rocketImage.style.left = movement;
       this.width = this.width + 10000;
+      this.edgeWarning(rocketImage.style.left);
     }
 
     if (direction === 'left') {
       let movement = parseInt(rocketImage.style.left) - 10 + 'px';
       rocketImage.style.left = movement;
       this.width = this.width + 10000;
+      this.edgeWarning(rocketImage.style.left);
     }
 
     if (direction === 'up') {
       let movement = parseInt(rocketImage.style.bottom) + 10 + 'px';
       rocketImage.style.bottom = movement;
       this.height += 10000;
+      this.topWarning(rocketImage.style.bottom);
     }
 
     if (direction === 'down') {
       let movement = parseInt(rocketImage.style.bottom) - 10 + 'px';
       rocketImage.style.bottom = movement;
       this.height -= 10000;
+      this.topWarning(rocketImage.style.bottom);
     }
   }
 
-  // edgeWarning(rocketImage) {
-  //   let xPosition = rocketImage.style.left;
-  //   let yPosition = rocketImage.style.bottom;
-  //   if (xPosition < 0 || yPosition < 0) {
-  //     this.color = 'orange';
-  //   }
-  // }
+  edgeWarning(string) {
+    if (parseInt(string) < 0 || parseInt(string) > 240) {
+      this.color = 'orange';
+    } else {
+      this.color = 'blue';
+    }
+  }
+
+  topWarning(string) {
+    if (parseInt(string) < 0 || parseInt(string) > 325) {
+      this.color = 'orange';
+    } else {
+      this.color = 'blue';
+    }
+  }
 
 }
